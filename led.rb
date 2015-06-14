@@ -7,8 +7,8 @@ puts 'read settings...'
 settings = JSON.parse(STDIN.read)
 p settings
 
-cmd = ""
-cmd2 = ""
+cmd = nil
+cmd2 = nil
 if settings['home'] == '0' # 外出中
   cmd = "\\x41\\x00\\x55" # 消灯
 else # 在宅中
@@ -16,6 +16,7 @@ else # 在宅中
     cmd = "\\x42\\x00\\x55" # 点灯
 
     t = Time.now
+    p t
     if settings['time_to_sleep'] != '0' # 寝る時間
       cmd2 = "\\x40\\xa0\\x55" # 赤色
     elsif (t.hour >= 21 || t.hour < 5) # 21時～5時
