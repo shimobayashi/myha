@@ -28,7 +28,8 @@ settings = JSON.parse(STDIN.read)
 p settings
 
 discomfort_index = settings['discomfort_index'].to_f
-if discomfort_index > AIRCON_COOLER_ON_THRESHOLD && settings['aircon_on_cooler_27'] == '0' && settings['home'] != '0' && settings['sleep'] != '0' # 在宅中かつ就寝中
+#if discomfort_index > AIRCON_COOLER_ON_THRESHOLD && settings['aircon_on_cooler_27'] == '0' && settings['home'] != '0' && settings['sleep'] != '0' # 在宅中かつ就寝中
+if discomfort_index > AIRCON_COOLER_ON_THRESHOLD && settings['aircon_on_cooler_27'] == '0' && settings['home'] != '0'
   aircon_cooler_on
 elsif discomfort_index < AIRCON_COOLER_OFF_THRESHOLD && settings['aircon_on_cooler_27'] != '0'
   aircon_off
